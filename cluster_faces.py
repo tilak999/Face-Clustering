@@ -12,6 +12,7 @@ import cv2
 import shutil
 import os
 from constants import FACE_DATA_PATH, ENCODINGS_PATH, CLUSTERING_RESULT_PATH
+from lib import resizeImage
 
 # add constants file in the code (clustering_result)
 
@@ -83,7 +84,7 @@ for labelID in labelIDs:
 	# loop over the sampled indexes
 	for i in idxs:
 		# load the input image and extract the face ROI
-		image = cv2.imread(data[i]["imagePath"])
+		image = resizeImage(cv2.imread(data[i]["imagePath"]))
 		(top, right, bottom, left) = data[i]["loc"]
 		face = image[top:bottom, left:right]
 
